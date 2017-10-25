@@ -7,3 +7,4 @@ Links
 * https://github.com/int128/gradle-swagger-generator-plugin
 * https://github.com/phiz71/vertx-swagger
 * https://github.com/swagger-api/swagger-codegen/tree/master/samples/client/petstore/kotlin
+* http://vertx.io/docs/vertx-web-api-contract/java/#_openapi_3_support

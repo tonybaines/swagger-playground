@@ -1,0 +1,20 @@
+openapi: 3.0.0
+swagger: '2.0'
+info:
+  version: 1.0.0
+  title: Swagger Users
+  license:
+    name: MIT
+  contact: {}
+security: []
+paths:
+  /users:
+    get:
+      summary: ''
+      description: ''
+      parameters: []
+      operationId: ''
+      responses:
+        default:
+          description: Default response
+          schema: {}

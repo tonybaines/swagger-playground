@@ -1,0 +1,45 @@
+
+
+buildscript {
+    ext.kotlin_version = '1.1.51'
+
+    repositories {
+        mavenCentral()
+    }
+    dependencies {
+        classpath "org.jetbrains.kotlin:kotlin-gradle-plugin:$kotlin_version"
+    }
+}
+
+plugins {
+    id "io.vertx.vertx-plugin" version "0.0.5"
+}
+apply plugin: 'kotlin'
+
+group 'github.tonybaines'
+version '0.1.0-SNAPSHOT'
+
+vertx {
+    mainVerticle = 'Swagger'
+}
+
+repositories {
+    mavenCentral()
+    jcenter()
+    maven {
+        url "https://jitpack.io"
+    }
+}
+
+dependencies {
+    compile "org.jetbrains.kotlin:kotlin-stdlib-jre8:$kotlin_version"
+    compile 'io.vertx:vertx-core:3.5.0'
+    compile 'io.vertx:vertx-web:3.5.0'
+    compile 'io.vertx:vertx-web-api-contract:3.5.0'
+}
+
+tasks.withType(org.jetbrains.kotlin.gradle.tasks.KotlinCompile).all {   (3)
+    kotlinOptions {
+        jvmTarget = "1.8"
+    }
+}
