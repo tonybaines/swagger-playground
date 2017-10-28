@@ -1,20 +1,54 @@
-openapi: 3.0.0
-swagger: '2.0'
+openapi: "3.0.0"
 info:
-  version: 1.0.0
-  title: Swagger Users
-  license:
-    name: MIT
-  contact: {}
-security: []
+  title: Simple API overview
+  version: v1
 paths:
   /users:
     get:
       summary: ''
       description: ''
       parameters: []
-      operationId: ''
+      operationId: 'users'
       responses:
         default:
           description: Default response
-          schema: {}
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/UserList"
+              examples:
+                success:
+                  value: [
+                             {
+                                 "id": "1",
+                                 "name": "user-1"
+                             },
+                             {
+                                 "id": "2",
+                                 "name": "user-2"
+                             },
+                             {
+                                 "id": "3",
+                                 "name": "user-3"
+                             },
+                             {
+                                 "id": "4",
+                                 "name": "user-4"
+                             }
+                         ]
+
+components:
+  schemas:
+    User:
+      properties:
+        id:
+          type: string
+        name:
+          type: string
+    UserList:
+          properties:
+            products:
+              description: Contains the list of users
+              type: array
+              items:
+          $ref: "#/components/schemas/User"

@@ -36,6 +36,7 @@ dependencies {
     compile 'io.vertx:vertx-core:3.5.0'
     compile 'io.vertx:vertx-web:3.5.0'
     compile 'io.vertx:vertx-web-api-contract:3.5.0'
+    compile 'com.google.code.gson:gson:2.8.2'
 }
 
 tasks.withType(org.jetbrains.kotlin.gradle.tasks.KotlinCompile).all {   (3)
