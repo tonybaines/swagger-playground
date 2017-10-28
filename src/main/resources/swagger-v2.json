@@ -1,0 +1,91 @@
+{
+  "swagger": "2.0",
+  "info": {
+    "title": "Simple API overview",
+    "version": "v1"
+  },
+  "paths": {
+    "/users": {
+      "head": {
+        "summary": "API information",
+        "operationId": "user-info",
+        "responses": {
+          "200": {
+            "description": "versions",
+            "schema": {
+              "type" : "array",
+                "items": {
+                  "type": "string",
+                  "enum": [
+                    "v1.0.0",
+                    "v1.1.0",
+                    "v2.0.0"
+                  ]
+                }
+            },
+            "examples": {
+              "OK": {
+                "value" : [
+                  "v1.0.0",
+                  "v1.1.0",
+                  "v2.0.0"
+                ]
+              }
+            }
+          }
+        }
+      },
+      "get": {
+        "summary": "",
+        "description": "",
+        "parameters": [],
+        "operationId": "users",
+        "responses": {
+          "200": {
+            "description": "Default",
+            "schema": {
+              "type": "array",
+              "items": {
+                "$ref": "#/definitions/User"
+              }
+            },
+            "examples": {
+              "OK": {
+                "value": [
+                  {
+                    "id": "1",
+                    "name": "user-1"
+                  },
+                  {
+                    "id": "2",
+                    "name": "user-2"
+                  },
+                  {
+                    "id": "3",
+                    "name": "user-3"
+                  },
+                  {
+                    "id": "4",
+                    "name": "user-4"
+                  }
+                ]
+              }
+            }
+          }
+        }
+      }
+    }
+  },
+  "definitions": {
+    "User": {
+      "properties": {
+        "id": {
+          "type": "string"
+        },
+        "name": {
+          "type": "string"
+        }
+      }
+    }
+  }
+}

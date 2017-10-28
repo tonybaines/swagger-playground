@@ -1,0 +1,8 @@
+= OpenAPI / Swagger definitions
+
+Although the OpenAPI spec has been out for a while, tool support is lagging,
+so the Swagger 2.0 version is preferred
+
+YAML provides (arguably) more concise definitions, but tool support is better with JSON.
+
+ SO: Use Swagger v2.0 JSON format

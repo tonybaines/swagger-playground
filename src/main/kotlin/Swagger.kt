@@ -12,7 +12,7 @@ val USERS = (1 until 5).map { it.toString() }.map { User(it, "user-$it") }
 
 class Swagger : AbstractVerticle() {
     override fun start(stopFuture: Future<Void>?) {
-        createRouterFactoryFromFile(vertx, "src/main/resources/swagger.yaml", { ar ->
+        createRouterFactoryFromFile(vertx, "src/main/resources/openapi-v3.yaml", { ar ->
             if (ar.succeeded()) {
                 // Spec loaded with success
                 val routerFactory = ar.result()
