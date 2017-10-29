@@ -24,3 +24,86 @@ Produce docs, client libs for Java, Kotlin, Python, Bash(!) and Vert.x server co
 Generate Swagger UI dynamic HTML
 
     ./gradlew generateSwaggerUIDocs
+
+## Thoughts on versioning and discovery
+
+* Semantic versioning
+  * **major**.**minor**.**patch**
+  * **patch** for bug fixes
+  * **minor** for backward-compatible changes (additions)
+  * **major** for backward-incompatible changes
+* Only expose major version in API
+* Root level API with discovery
+  * version-specific info at eg. `https://host:port/api/v2`
+  * `-SNAPSHOT` suffix during dev
+  * HTML versions for humans (Swagger Docs, CHANGELOG)
+```
+GET: https://host:port/api 
+Accept: application/json
+{
+  "latest-stable": {
+    "href" : https://host:port/api/v2",
+    "content-type": "application/json"
+  },
+  "versions": {
+    "v1": {
+      "latest" : false,
+      "released" : true,
+      "links": {
+        "users": {
+          "href": "https://host:port/api/v1/users",
+          "content-type": "application/json"
+        },
+        "profiles": {
+          "href": "https://host:port/api/v1/profiles",
+          "content-type": "application/json"
+        },
+        "docs": {
+          "href": "https://host:port/api/v1/docs",
+          "content-type": "text/html"
+        }
+      }
+    },
+    "v2": {
+      "latest" : true,
+      "released" : true,
+      "links": {
+        "users": {
+          "href": "https://host:port/api/v2/users",
+          "content-type": "application/json"
+        },
+        "profiles": {
+          "href": "https://host:port/api/v2/profiles",
+          "content-type": "application/json"
+        },
+        "docs": {
+          "href": "https://host:port/api/v2/docs",
+          "content-type": "text/html"
+        }
+      }
+    },
+    "v3-SNAPSHOT": {
+      "latest" : false,
+      "released" : false,
+      "links": {
+        "users": {
+          "href": "https://host:port/api/v3/users",
+          "content-type": "application/json"
+        },
+        "profiles": {
+          "href": "https://host:port/api/v3/profiles",
+          "content-type": "application/json"
+        },
+        "events": {
+          "href": "https://host:port/api/v3/events",
+          "content-type": "application/json"
+        },
+        "docs": {
+          "href": "https://host:port/api/v3/docs",
+          "content-type": "text/html"
+        }
+      }
+    }
+  }
+}
+```
