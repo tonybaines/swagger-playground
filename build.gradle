@@ -41,7 +41,7 @@ dependencies {
 vertx {
     mainVerticle = 'Swagger'
 }
-def swaggerDef = file('src/main/resources/swagger-v2.json')
+def swaggerDef = file('src/main/resources/swagger-api-v1.json')
 
 swaggerSources {
     docs {

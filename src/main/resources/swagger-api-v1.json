@@ -1,0 +1,113 @@
+{
+  "swagger": "2.0",
+  "info": {
+    "title": "Simple API overview",
+    "description": "My Simple API",
+    "version": "v1.0.0"
+  },
+  "schemes": [
+    "https"
+  ],
+  "host": "localhost:8080",
+  "basePath": "/api/v1",
+  "paths": {
+    "/docs": {
+      "get": {
+        "schemes": [
+          "https"
+        ],
+        "summary": "Documentation",
+        "operationId": "docs",
+        "produces": [
+          "text/html"
+        ]
+      }
+    },
+    "/users": {
+      "get": {
+        "schemes": [
+          "https"
+        ],
+        "summary": "Users",
+        "description": "Retrieve all users",
+        "operationId": "users",
+        "produces": [
+          "application/json"
+        ],
+        "responses": {
+          "200": {
+            "description": "Default",
+            "schema": {
+              "$ref": "#/definitions/Users"
+            },
+            "examples": [
+              {
+                "id": "1",
+                "name": "user-1"
+              },
+              {
+                "id": "2",
+                "name": "user-2"
+              },
+              {
+                "id": "3",
+                "name": "user-3"
+              },
+              {
+                "id": "4",
+                "name": "user-4"
+              }
+            ]
+          }
+        }
+      }
+    },
+    "/users/{id}": {
+      "get": {
+        "schemes": [
+          "https"
+        ],
+        "summary": "Get a specific user",
+        "operationId": "user",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "type": "string",
+            "required": "true"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "User",
+            "schema": {
+              "$ref": "#/definitions/User"
+            },
+            "examples": {
+              "id": "3",
+              "name": "user-3"
+            }
+          }
+        }
+      }
+    }
+  },
+  "definitions": {
+    "User": {
+      "properties": {
+        "id": {
+          "type": "string"
+        },
+        "name": {
+          "type": "string"
+        }
+      }
+    },
+    "Users": {
+      "type": "array",
+      "items": {
+        "$ref": "#/definitions/User"
+      }
+    }
+  }
+}
